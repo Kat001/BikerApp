@@ -1,14 +1,14 @@
-import 'package:bikerboy/screens/login.dart';
 import 'package:bikerboy/screens/otpforgotpassword.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:bikerboy/Components/animate.dart';
 
-class ForgotPassword extends StatefulWidget {
+class ChangePassword extends StatefulWidget {
   @override
-  _ForgotPasswordState createState() => _ForgotPasswordState();
+  _ChangePasswordState createState() => _ChangePasswordState();
 }
 
-class _ForgotPasswordState extends State<ForgotPassword> {
+class _ChangePasswordState extends State<ChangePassword> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,8 +39,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                         padding: const EdgeInsets.only(left: 15.0, top: 35),
                         child: IconButton(
                           onPressed: () {
-                            Navigator.push(
-                                context, SlideRightRoute(page: Login()));
+                            Navigator.pop(context, SlideRightRoute());
                           },
                           icon: Icon(
                             Icons.arrow_back_ios,
@@ -57,10 +56,10 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                         child: Opacity(
                           opacity: 0.8,
                           child: Text(
-                            "Hi,",
+                            "Reset password",
                             style: TextStyle(
                               fontFamily: 'Roboto',
-                              fontSize: 55,
+                              fontSize: 30,
                               color: Colors.white,
                             ),
                           ),
@@ -72,35 +71,11 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               ),
             ),
             SizedBox(height: 50.0),
-            Center(
-              child: Container(
-                  padding: EdgeInsets.only(left: 30.0, right: 30.0),
-                  child: Opacity(
-                    opacity: 0.6,
-                    child: Text(
-                      "Enter Registered Number or Email we`ll send you 4 digit otp. then you`ll be able to change password",
-                      style: TextStyle(fontSize: 15.0),
-                    ),
-                  )),
-            ),
-            SizedBox(height: 5.0),
-            // Center(
-            //   child: Container(
-            //       child: Text(
-            //     "4 digit otp. then you`ll be able to change password",
-            //     style: TextStyle(fontSize: 15.0),
-            //   )),
-            // ),
-            SizedBox(height: 50.0),
             Padding(
               padding: const EdgeInsets.only(left: 30.0, right: 30.0),
               child: TextFormField(
                   decoration: InputDecoration(
-                hintText: "First Name",
-                prefixIcon: Icon(
-                  Icons.call,
-                  color: Color(0xff0048AA),
-                ),
+                hintText: "Current Password",
                 fillColor: Colors.white,
                 contentPadding: EdgeInsets.only(
                   left: 25,
@@ -120,7 +95,57 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 ),
               )),
             ),
-            SizedBox(height: 50.0),
+            SizedBox(height: 20.0),
+            Padding(
+              padding: const EdgeInsets.only(left: 30.0, right: 30.0),
+              child: TextFormField(
+                  decoration: InputDecoration(
+                hintText: "New Password",
+                fillColor: Colors.white,
+                contentPadding: EdgeInsets.only(
+                  left: 25,
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(25.0),
+                  borderSide: BorderSide(
+                    color: Colors.blue,
+                  ),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(25.0),
+                  borderSide: BorderSide(
+                    color: Color(0xff0048AA),
+                    width: 2.0,
+                  ),
+                ),
+              )),
+            ),
+            SizedBox(height: 20.0),
+            Padding(
+              padding: const EdgeInsets.only(left: 30.0, right: 30.0),
+              child: TextFormField(
+                  decoration: InputDecoration(
+                hintText: "Confirm Password",
+                fillColor: Colors.white,
+                contentPadding: EdgeInsets.only(
+                  left: 25,
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(25.0),
+                  borderSide: BorderSide(
+                    color: Colors.blue,
+                  ),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(25.0),
+                  borderSide: BorderSide(
+                    color: Color(0xff0048AA),
+                    width: 2.0,
+                  ),
+                ),
+              )),
+            ),
+            SizedBox(height: 20.0),
             Container(
               margin: new EdgeInsets.only(left: 30.0, right: 30.0, top: 20),
               child: MaterialButton(
@@ -129,15 +154,13 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   // if (_formKey.currentState.validate()) {
                   //   // loginUser();
                   // }
-                  Navigator.push(
-                      context, SlideLeftRoute(page: OtpForgotPassword()));
                 },
                 minWidth: 250.0,
                 // shape: RoundedRectangleBorder(
                 //     borderRadius: BorderRadius.circular(8.0)),
                 height: 55.0,
                 child: Text(
-                  "Next",
+                  "Done",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 22.0,

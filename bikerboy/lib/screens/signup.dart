@@ -1,4 +1,6 @@
+import 'package:bikerboy/screens/login.dart';
 import 'package:flutter/material.dart';
+import 'package:bikerboy/Components/animate.dart';
 
 class Signup extends StatefulWidget {
   @override
@@ -254,7 +256,9 @@ class _SignupState extends State<Signup> {
         Padding(
           padding: EdgeInsets.only(top: 0.0),
           child: FlatButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(context, SlideLeftRoute(page: Login()));
+            },
             child: RichText(
               text: TextSpan(children: [
                 TextSpan(
@@ -268,7 +272,7 @@ class _SignupState extends State<Signup> {
                 TextSpan(
                   text: 'Login',
                   style: TextStyle(
-                    color: Colors.red,
+                    color: Color(0xff0048AA),
                     fontSize: MediaQuery.of(context).size.height / 50,
                     fontWeight: FontWeight.bold,
                   ),
@@ -289,23 +293,55 @@ class _SignupState extends State<Signup> {
           height: 1.4 * (MediaQuery.of(context).size.height / 20),
           width: 9 * (MediaQuery.of(context).size.width / 10),
           margin: EdgeInsets.only(top: 20),
-          child: RaisedButton(
-            elevation: 5.0,
-            color: Colors.red,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(30.0),
-            ),
-            onPressed: () {},
+          child: MaterialButton(
+            onPressed: () {
+              print("login clicked..");
+              Navigator.push(context, SlideLeftRoute(page: Login()));
+
+              // if (_formKey.currentState.validate()) {
+              //   // loginUser();
+              // }
+            },
+            minWidth: 250.0,
+            // shape: RoundedRectangleBorder(
+            //     borderRadius: BorderRadius.circular(8.0)),
+            height: 55.0,
             child: Text(
               "CREATE ACCOUNT",
               style: TextStyle(
                 color: Colors.white,
-                letterSpacing: 1.5,
-                fontSize: MediaQuery.of(context).size.height / 40,
+                fontSize: 22.0,
+                fontFamily: 'RobotoBold',
               ),
             ),
           ),
-        )
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(25.0)),
+            gradient: LinearGradient(colors: [Color(0xff0048AA), Colors.blue]),
+          ),
+        ),
+        // Container(
+        //   height: 1.4 * (MediaQuery.of(context).size.height / 20),
+        //   width: 9 * (MediaQuery.of(context).size.width / 10),
+        //   margin: EdgeInsets.only(top: 20),
+        //   child: RaisedButton(
+        //     elevation: 5.0,
+        //     shape: RoundedRectangleBorder(
+        //       borderRadius: BorderRadius.circular(30.0),
+        //     ),
+        //     onPressed: () {
+        //       Navigator.push(context, SlideRightRoute(page: Login()));
+        //     },
+        //     child: Text(
+        //       "CREATE ACCOUNT",
+        //       style: TextStyle(
+        //         color: Colors.white,
+        //         letterSpacing: 1.5,
+        //         fontSize: MediaQuery.of(context).size.height / 40,
+        //       ),
+        //     ),
+        //   ),
+        // )
       ],
     );
   }
@@ -327,7 +363,10 @@ class _SignupState extends State<Signup> {
               width: MediaQuery.of(context).size.width,
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.blue,
+                  image: DecorationImage(
+                    image: AssetImage('assets/images/patternback.jpg'),
+                    fit: BoxFit.fill,
+                  ),
                   borderRadius: BorderRadius.only(
                     bottomLeft: const Radius.circular(70),
                     bottomRight: const Radius.circular(70),
@@ -339,9 +378,24 @@ class _SignupState extends State<Signup> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 // _buildContainer(),
+                SizedBox(height: 70.0),
+                Align(
+                  alignment: Alignment.bottomLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 20.0, bottom: 10.0),
+                    child: Text(
+                      'Sign up',
+                      style: TextStyle(
+                        fontSize: MediaQuery.of(context).size.height / 25,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+
                 Container(
                   margin: const EdgeInsets.only(
-                    top: 50,
                     left: 15,
                     right: 15,
                   ),

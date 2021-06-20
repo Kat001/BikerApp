@@ -1,15 +1,17 @@
+import 'package:bikerboy/screens/createaccount.dart';
 import 'package:bikerboy/screens/forgotpassword.dart';
 import 'package:bikerboy/screens/resetpassword.dart';
+import 'package:bikerboy/screens/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:bikerboy/Components/animate.dart';
 
-class OtpForgotPassword extends StatefulWidget {
+class VerifyAccount extends StatefulWidget {
   @override
-  _OtpForgotPasswordState createState() => _OtpForgotPasswordState();
+  _VerifyAccountState createState() => _VerifyAccountState();
 }
 
-class _OtpForgotPasswordState extends State<OtpForgotPassword> {
+class _VerifyAccountState extends State<VerifyAccount> {
   FocusNode pin2FocusNode;
   FocusNode pin3FocusNode;
   FocusNode pin4FocusNode;
@@ -80,7 +82,7 @@ class _OtpForgotPasswordState extends State<OtpForgotPassword> {
                         child: IconButton(
                           onPressed: () {
                             Navigator.push(context,
-                                SlideRightRoute(page: ForgotPassword()));
+                                SlideRightRoute(page: CreateAccount()));
                           },
                           icon: Icon(
                             Icons.arrow_back_ios,
@@ -288,8 +290,7 @@ class _OtpForgotPasswordState extends State<OtpForgotPassword> {
               child: MaterialButton(
                 onPressed: () {
                   print("login clicked..");
-                  Navigator.push(
-                      context, SlideLeftRoute(page: ResetPassword()));
+                  Navigator.push(context, SlideLeftRoute(page: Signup()));
                   // if (_formKey.currentState.validate()) {
                   //   // loginUser();
                   // }

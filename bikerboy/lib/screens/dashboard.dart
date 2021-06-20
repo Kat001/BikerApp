@@ -1,6 +1,7 @@
+import 'package:bikerboy/screens/detail.dart';
+import 'package:bikerboy/screens/faqs.dart';
 import 'package:bikerboy/screens/home.dart';
 import 'package:bikerboy/screens/info.dart';
-import 'package:bikerboy/screens/list.dart';
 import 'package:bikerboy/screens/profile.dart';
 import 'package:flutter/material.dart';
 
@@ -13,8 +14,8 @@ class _DashboardState extends State<Dashboard> {
   int _selectedIndex = 0;
   final List<Widget> _widgetOptions = <Widget>[
     Home(),
-    ListOrder(),
-    Profile(),
+    Faqs(),
+    Detail(),
     Info(),
   ];
 

@@ -1,4 +1,7 @@
+import 'package:bikerboy/screens/signup.dart';
+import 'package:bikerboy/screens/verifyaccount.dart';
 import 'package:flutter/material.dart';
+import 'package:bikerboy/Components/animate.dart';
 
 class CreateAccount extends StatefulWidget {
   @override
@@ -105,6 +108,8 @@ class _CreateAccountState extends State<CreateAccount> {
                   // if (_formKey.currentState.validate()) {
                   //   // loginUser();
                   // }
+                  Navigator.push(
+                      context, SlideLeftRoute(page: VerifyAccount()));
                 },
                 minWidth: 250.0,
                 // shape: RoundedRectangleBorder(

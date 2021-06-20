@@ -1,3 +1,7 @@
+import 'package:bikerboy/screens/createaccount.dart';
+import 'package:bikerboy/screens/dashboard.dart';
+import 'package:bikerboy/screens/forgotpassword.dart';
+import 'package:bikerboy/screens/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:bikerboy/Components/animate.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -22,10 +26,11 @@ class _LoginState extends State<Login> {
         children: <Widget>[
           Container(
             decoration: new BoxDecoration(
-                image: new DecorationImage(
-              fit: BoxFit.cover,
-              image: AssetImage('assets/images/Login.jpg'),
-            )),
+              image: new DecorationImage(
+                fit: BoxFit.cover,
+                image: AssetImage('assets/images/Login.jpg'),
+              ),
+            ),
           ),
           Center(
             child: SingleChildScrollView(
@@ -111,9 +116,12 @@ class _LoginState extends State<Login> {
                     child: MaterialButton(
                       onPressed: () {
                         print("login clicked..");
-                        if (_formKey.currentState.validate()) {
-                          // loginUser();
-                        }
+                        Navigator.push(
+                            context, SlideLeftRoute(page: Dashboard()));
+
+                        // if (_formKey.currentState.validate()) {
+                        //   // loginUser();
+                        // }
                       },
                       minWidth: 250.0,
                       // shape: RoundedRectangleBorder(
@@ -137,9 +145,15 @@ class _LoginState extends State<Login> {
                     height: 15.0,
                   ),
                   Center(
-                    child: Text(
-                      'Forgot password?',
-                      style: TextStyle(color: Colors.white),
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context, SlideLeftRoute(page: ForgotPassword()));
+                      },
+                      child: Text(
+                        'Forgot password?',
+                        style: TextStyle(color: Colors.white),
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -157,10 +171,13 @@ class _LoginState extends State<Login> {
                     child: MaterialButton(
                       // color: Color(0xFF27DEBF),
                       onPressed: () {
-                        print("login clicked..");
-                        if (_formKey.currentState.validate()) {
-                          // loginUser();
-                        }
+                        Navigator.push(
+                            context, SlideLeftRoute(page: CreateAccount()));
+
+                        // print("login clicked..");
+                        // if (_formKey.currentState.validate()) {
+                        //   // loginUser();
+                        // }
                       },
                       minWidth: 250.0,
                       // shape: RoundedRectangleBorder(
@@ -206,11 +223,7 @@ class _LoginState extends State<Login> {
                   //     )
                   //   ],
                   // ),
-                  Row(
-                    children: <Widget>[
-                      // TODO Social Icons
-                    ],
-                  ),
+                  SizedBox(height: 10.0),
                 ],
               ),
             ),

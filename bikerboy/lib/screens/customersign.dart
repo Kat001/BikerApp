@@ -1,15 +1,18 @@
+import 'package:bikerboy/Components/sizes_helpers.dart';
 import 'package:bikerboy/screens/forgotpassword.dart';
 import 'package:bikerboy/screens/resetpassword.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:bikerboy/Components/animate.dart';
+import 'package:syncfusion_flutter_signaturepad/signaturepad.dart';
+import 'dart:ui' as ui;
 
-class OtpForgotPassword extends StatefulWidget {
+class CustomerSign extends StatefulWidget {
   @override
-  _OtpForgotPasswordState createState() => _OtpForgotPasswordState();
+  _CustomerSignState createState() => _CustomerSignState();
 }
 
-class _OtpForgotPasswordState extends State<OtpForgotPassword> {
+class _CustomerSignState extends State<CustomerSign> {
   FocusNode pin2FocusNode;
   FocusNode pin3FocusNode;
   FocusNode pin4FocusNode;
@@ -22,6 +25,34 @@ class _OtpForgotPasswordState extends State<OtpForgotPassword> {
   final TextEditingController _fourthController = TextEditingController();
   final TextEditingController _fifthController = TextEditingController();
   final TextEditingController _sixthController = TextEditingController();
+
+  GlobalKey<SfSignaturePadState> signatureGlobalKey = GlobalKey();
+
+  void _handleClearButtonPressed() {
+    signatureGlobalKey.currentState.clear();
+  }
+
+  void _handleSaveButtonPressed() async {
+    final data = await signatureGlobalKey.currentState.toImage(pixelRatio: 3.0);
+    final bytes = await data.toByteData(format: ui.ImageByteFormat.png);
+    if (data != null) {
+      await Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (BuildContext context) {
+            return Scaffold(
+              appBar: AppBar(),
+              body: Center(
+                child: Container(
+                  color: Colors.grey[300],
+                  child: Image.memory(bytes.buffer.asUint8List()),
+                ),
+              ),
+            );
+          },
+        ),
+      );
+    }
+  }
 
   @override
   void initState() {
@@ -62,7 +93,7 @@ class _OtpForgotPasswordState extends State<OtpForgotPassword> {
               child: Container(
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('assets/images/pattern.jpg'),
+                    image: AssetImage('assets/images/patternback.jpg'),
                     fit: BoxFit.fill,
                   ),
                   color: Color(0xff000066),
@@ -79,8 +110,7 @@ class _OtpForgotPasswordState extends State<OtpForgotPassword> {
                         padding: const EdgeInsets.only(left: 15.0, top: 35),
                         child: IconButton(
                           onPressed: () {
-                            Navigator.push(context,
-                                SlideRightRoute(page: ForgotPassword()));
+                            Navigator.pop(context, SlideRightRoute());
                           },
                           icon: Icon(
                             Icons.arrow_back_ios,
@@ -111,26 +141,6 @@ class _OtpForgotPasswordState extends State<OtpForgotPassword> {
                 ),
               ),
             ),
-            SizedBox(height: 50.0),
-            Center(
-              child: Container(
-                  padding: EdgeInsets.only(left: 30.0, right: 30.0),
-                  child: Opacity(
-                    opacity: 0.6,
-                    child: Text(
-                      "Please enter verification code sent to your mobile number",
-                      style: TextStyle(fontSize: 15.0),
-                    ),
-                  )),
-            ),
-            SizedBox(height: 5.0),
-            // Center(
-            //   child: Container(
-            //       child: Text(
-            //     "4 digit otp. then you`ll be able to change password",
-            //     style: TextStyle(fontSize: 15.0),
-            //   )),
-            // ),
             SizedBox(height: 50.0),
             Container(
                 padding: EdgeInsets.only(
@@ -282,14 +292,68 @@ class _OtpForgotPasswordState extends State<OtpForgotPassword> {
                     // ),
                   ],
                 )),
-            SizedBox(height: 50.0),
+            SizedBox(height: 20.0),
+            Center(
+                child: Opacity(
+              opacity: 0.6,
+              child: Text(
+                "Customer Signature",
+                style: TextStyle(
+                  fontSize: displayWidth(context) * 0.05,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            )),
+            Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(20.0),
+                  child: Container(
+                    margin: EdgeInsets.all(5.0),
+                    child: SfSignaturePad(
+                        key: signatureGlobalKey,
+                        backgroundColor: Colors.white,
+                        strokeColor: Colors.black,
+                        minimumStrokeWidth: 1.0,
+                        maximumStrokeWidth: 4.0),
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey,
+                            blurRadius: 10.0,
+                            // spreadRadius: 5.0,
+                          )
+                        ]
+                        // borderRadius: BorderRadius.circular(20.0),
+                        ),
+                  ),
+                ),
+                SizedBox(height: 10),
+                // Row(children: <Widget>[
+                //   FlatButton(
+                //     child: Text('ToImage'),
+                //     onPressed: _handleSaveButtonPressed,
+                //   ),
+                //   FlatButton(
+                //     child: Text('Clear'),
+                //     onPressed: _handleClearButtonPressed,
+                //   )
+                // ], mainAxisAlignment: MainAxisAlignment.spaceEvenly)
+              ],
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+            ),
             Container(
-              margin: new EdgeInsets.only(left: 30.0, right: 30.0, top: 20),
+              margin: new EdgeInsets.only(
+                left: 30.0,
+                right: 30.0,
+              ),
               child: MaterialButton(
                 onPressed: () {
                   print("login clicked..");
-                  Navigator.push(
-                      context, SlideLeftRoute(page: ResetPassword()));
+                  // Navigator.push(
+                  //     context, SlideLeftRoute(page: ResetPassword()));
                   // if (_formKey.currentState.validate()) {
                   //   // loginUser();
                   // }
@@ -299,7 +363,7 @@ class _OtpForgotPasswordState extends State<OtpForgotPassword> {
                 //     borderRadius: BorderRadius.circular(8.0)),
                 height: 55.0,
                 child: Text(
-                  "NEXT",
+                  "DELIVERED",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 22.0,

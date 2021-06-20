@@ -1,5 +1,7 @@
+import 'package:bikerboy/screens/otpforgotpassword.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:bikerboy/Components/animate.dart';
 
 class ResetPassword extends StatefulWidget {
   @override
@@ -37,7 +39,8 @@ class _ResetPasswordState extends State<ResetPassword> {
                         padding: const EdgeInsets.only(left: 15.0, top: 35),
                         child: IconButton(
                           onPressed: () {
-                            //Navigator.push(context, SlideRightRoute(page: Homepage()));
+                            Navigator.push(context,
+                                SlideRightRoute(page: OtpForgotPassword()));
                           },
                           icon: Icon(
                             Icons.arrow_back_ios,
