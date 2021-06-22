@@ -42,7 +42,7 @@ class _ProfileState extends State<Profile> {
           padding: const EdgeInsets.all(10.0),
           child: TextFormField(
               decoration: InputDecoration(
-            hintText: "First Name",
+            hintText: "Last Name",
             fillColor: Colors.white,
             contentPadding: EdgeInsets.only(left: 25),
             focusedBorder: OutlineInputBorder(
@@ -64,7 +64,7 @@ class _ProfileState extends State<Profile> {
           padding: const EdgeInsets.all(10.0),
           child: TextFormField(
               decoration: InputDecoration(
-            hintText: "First Name",
+            hintText: "E-mail ID",
             fillColor: Colors.white,
             contentPadding: EdgeInsets.only(left: 25),
             focusedBorder: OutlineInputBorder(
@@ -86,7 +86,7 @@ class _ProfileState extends State<Profile> {
           padding: const EdgeInsets.all(10.0),
           child: TextFormField(
               decoration: InputDecoration(
-            hintText: "First Name",
+            hintText: "Phone Number",
             fillColor: Colors.white,
             contentPadding: EdgeInsets.only(left: 25),
             focusedBorder: OutlineInputBorder(
@@ -108,29 +108,7 @@ class _ProfileState extends State<Profile> {
           padding: const EdgeInsets.all(10.0),
           child: TextFormField(
               decoration: InputDecoration(
-            hintText: "First Name",
-            fillColor: Colors.white,
-            contentPadding: EdgeInsets.only(left: 25),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(25.0),
-              borderSide: BorderSide(
-                color: Colors.blue,
-              ),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(25.0),
-              borderSide: BorderSide(
-                color: Colors.blueAccent,
-                width: 2.0,
-              ),
-            ),
-          )),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: TextFormField(
-              decoration: InputDecoration(
-            hintText: "First Name",
+            hintText: "Address",
             fillColor: Colors.white,
             contentPadding: EdgeInsets.only(left: 25),
             focusedBorder: OutlineInputBorder(

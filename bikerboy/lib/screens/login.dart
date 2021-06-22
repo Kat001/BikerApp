@@ -37,10 +37,10 @@ class _LoginState extends State<Login> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
-                  Padding(
+                  Container(
                     padding: const EdgeInsets.only(bottom: 50.0),
                     child: Image(
-                      image: AssetImage('assets/images/logins.png'),
+                      image: AssetImage('assets/images/logo.png'),
                       height: 200.0,
                       width: 200.0,
                     ),
@@ -69,7 +69,7 @@ class _LoginState extends State<Login> {
                         }
                       },
                       decoration: InputDecoration(
-                        labelText: 'Username',
+                        labelText: 'Email or Mobile number ',
                         labelStyle: TextStyle(color: Colors.white),
                         enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),

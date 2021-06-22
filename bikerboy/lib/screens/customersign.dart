@@ -1,4 +1,5 @@
 import 'package:bikerboy/Components/sizes_helpers.dart';
+import 'package:bikerboy/screens/feedback.dart';
 import 'package:bikerboy/screens/forgotpassword.dart';
 import 'package:bikerboy/screens/resetpassword.dart';
 import 'package:flutter/material.dart';
@@ -127,7 +128,7 @@ class _CustomerSignState extends State<CustomerSign> {
                         child: Opacity(
                           opacity: 0.8,
                           child: Text(
-                            "Verify your Account",
+                            "Customer Name    Rs 750",
                             style: TextStyle(
                               fontFamily: 'Roboto',
                               fontSize: 30,
@@ -352,6 +353,8 @@ class _CustomerSignState extends State<CustomerSign> {
               child: MaterialButton(
                 onPressed: () {
                   print("login clicked..");
+                  Navigator.push(context, SlideRightRoute(page: FeedBack()));
+
                   // Navigator.push(
                   //     context, SlideLeftRoute(page: ResetPassword()));
                   // if (_formKey.currentState.validate()) {

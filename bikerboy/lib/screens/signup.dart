@@ -1,6 +1,7 @@
 import 'package:bikerboy/screens/login.dart';
 import 'package:flutter/material.dart';
 import 'package:bikerboy/Components/animate.dart';
+import 'package:flutter/services.dart';
 
 class Signup extends StatefulWidget {
   @override
@@ -10,6 +11,16 @@ class Signup extends StatefulWidget {
 class _SignupState extends State<Signup> {
   bool agree = false;
   String dropdownValue = 'Select One';
+  var _formKey = GlobalKey<FormState>();
+  final TextEditingController firstNameController = TextEditingController();
+  final TextEditingController lastNameController = TextEditingController();
+  final TextEditingController emailIdController = TextEditingController();
+  final TextEditingController phoneNumberController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
+  final TextEditingController aadharNumberController = TextEditingController();
+
   Widget _buildContainer() {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -52,8 +63,11 @@ class _SignupState extends State<Signup> {
                         dropdownValue = newValue;
                       });
                     },
-                    items: <String>['Select One', 'Two', 'Free', 'Four']
-                        .map<DropdownMenuItem<String>>((String value) {
+                    items: <String>[
+                      'Select One',
+                      'B2B',
+                      'B2C',
+                    ].map<DropdownMenuItem<String>>((String value) {
                       return DropdownMenuItem<String>(
                         value: value,
                         child: Text(value),
@@ -69,156 +83,243 @@ class _SignupState extends State<Signup> {
         Padding(
           padding: const EdgeInsets.all(10.0),
           child: TextFormField(
+              controller: firstNameController,
+              validator: (String value) {
+                if (value.isEmpty) {
+                  return "Please enter the First Name";
+                }
+              },
               decoration: InputDecoration(
-            hintText: "First Name",
-            fillColor: Colors.white,
-            contentPadding: EdgeInsets.only(left: 25),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(25.0),
-              borderSide: BorderSide(
-                color: Colors.blue,
-              ),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(25.0),
-              borderSide: BorderSide(
-                color: Colors.blueAccent,
-                width: 2.0,
-              ),
-            ),
-          )),
+                hintText: "First Name",
+                fillColor: Colors.white,
+                contentPadding: EdgeInsets.only(left: 25),
+                border: new OutlineInputBorder(
+                  borderRadius: new BorderRadius.circular(25.0),
+                  borderSide: new BorderSide(),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(25.0),
+                  borderSide: BorderSide(
+                    color: Colors.blue,
+                  ),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(25.0),
+                  borderSide: BorderSide(
+                    color: Colors.blueAccent,
+                    width: 2.0,
+                  ),
+                ),
+              )),
         ),
         Padding(
           padding: const EdgeInsets.all(10.0),
           child: TextFormField(
+              controller: lastNameController,
+              validator: (String value) {
+                if (value.isEmpty) {
+                  return "Please enter the Last Name";
+                }
+              },
               decoration: InputDecoration(
-            hintText: "First Name",
-            fillColor: Colors.white,
-            contentPadding: EdgeInsets.only(left: 25),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(25.0),
-              borderSide: BorderSide(
-                color: Colors.blue,
-              ),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(25.0),
-              borderSide: BorderSide(
-                color: Colors.blueAccent,
-                width: 2.0,
-              ),
-            ),
-          )),
+                hintText: "Last Name",
+                fillColor: Colors.white,
+                contentPadding: EdgeInsets.only(left: 25),
+                border: new OutlineInputBorder(
+                  borderRadius: new BorderRadius.circular(25.0),
+                  borderSide: new BorderSide(),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(25.0),
+                  borderSide: BorderSide(
+                    color: Colors.blue,
+                  ),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(25.0),
+                  borderSide: BorderSide(
+                    color: Colors.blueAccent,
+                    width: 2.0,
+                  ),
+                ),
+              )),
         ),
         Padding(
           padding: const EdgeInsets.all(10.0),
           child: TextFormField(
+              controller: emailIdController,
+              validator: (String value) {
+                if (value.isEmpty) {
+                  return "Please enter the email";
+                }
+              },
               decoration: InputDecoration(
-            hintText: "First Name",
-            fillColor: Colors.white,
-            contentPadding: EdgeInsets.only(left: 25),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(25.0),
-              borderSide: BorderSide(
-                color: Colors.blue,
-              ),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(25.0),
-              borderSide: BorderSide(
-                color: Colors.blueAccent,
-                width: 2.0,
-              ),
-            ),
-          )),
+                hintText: "E-mail ID",
+                fillColor: Colors.white,
+                contentPadding: EdgeInsets.only(left: 25),
+                border: new OutlineInputBorder(
+                  borderRadius: new BorderRadius.circular(25.0),
+                  borderSide: new BorderSide(),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(25.0),
+                  borderSide: BorderSide(
+                    color: Colors.blue,
+                  ),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(25.0),
+                  borderSide: BorderSide(
+                    color: Colors.blueAccent,
+                    width: 2.0,
+                  ),
+                ),
+              )),
         ),
         Padding(
           padding: const EdgeInsets.all(10.0),
           child: TextFormField(
+              controller: phoneNumberController,
+              maxLength: 10,
+              keyboardType: TextInputType.number,
+              inputFormatters: <TextInputFormatter>[
+                FilteringTextInputFormatter.digitsOnly
+              ],
+              validator: (String value) {
+                if (value.isEmpty) {
+                  return "Please enter the Phone number";
+                }
+                if (value.length != 10) {
+                  return " Please enter a valid number ";
+                }
+              },
               decoration: InputDecoration(
-            hintText: "First Name",
-            fillColor: Colors.white,
-            contentPadding: EdgeInsets.only(left: 25),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(25.0),
-              borderSide: BorderSide(
-                color: Colors.blue,
-              ),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(25.0),
-              borderSide: BorderSide(
-                color: Colors.blueAccent,
-                width: 2.0,
-              ),
-            ),
-          )),
+                hintText: "Phone Number",
+                fillColor: Colors.white,
+                contentPadding: EdgeInsets.only(left: 25),
+                border: new OutlineInputBorder(
+                  borderRadius: new BorderRadius.circular(25.0),
+                  borderSide: new BorderSide(),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(25.0),
+                  borderSide: BorderSide(
+                    color: Colors.blue,
+                  ),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(25.0),
+                  borderSide: BorderSide(
+                    color: Colors.blueAccent,
+                    width: 2.0,
+                  ),
+                ),
+              )),
         ),
         Padding(
           padding: const EdgeInsets.all(10.0),
           child: TextFormField(
+              controller: passwordController,
+              validator: (String value) {
+                if (value.isEmpty) {
+                  return "Please enter the Password";
+                }
+                if (value.length < 8) {
+                  return " password length should be 8 or greater than 8 ";
+                }
+              },
               decoration: InputDecoration(
-            hintText: "First Name",
-            fillColor: Colors.white,
-            contentPadding: EdgeInsets.only(left: 25),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(25.0),
-              borderSide: BorderSide(
-                color: Colors.blue,
-              ),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(25.0),
-              borderSide: BorderSide(
-                color: Colors.blueAccent,
-                width: 2.0,
-              ),
-            ),
-          )),
+                hintText: "Password",
+                fillColor: Colors.white,
+                contentPadding: EdgeInsets.only(left: 25),
+                border: new OutlineInputBorder(
+                  borderRadius: new BorderRadius.circular(25.0),
+                  borderSide: new BorderSide(),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(25.0),
+                  borderSide: BorderSide(
+                    color: Colors.blue,
+                  ),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(25.0),
+                  borderSide: BorderSide(
+                    color: Colors.blueAccent,
+                    width: 2.0,
+                  ),
+                ),
+              )),
         ),
         Padding(
           padding: const EdgeInsets.all(10.0),
           child: TextFormField(
+              controller: confirmPasswordController,
+              validator: (String value) {
+                if (value.isEmpty) {
+                  return "Please enter the Phone number";
+                }
+                if (value.length < 8) {
+                  return " Please enter a valid number ";
+                }
+              },
               decoration: InputDecoration(
-            hintText: "First Name",
-            fillColor: Colors.white,
-            contentPadding: EdgeInsets.only(left: 25),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(25.0),
-              borderSide: BorderSide(
-                color: Colors.blue,
-              ),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(25.0),
-              borderSide: BorderSide(
-                color: Colors.blueAccent,
-                width: 2.0,
-              ),
-            ),
-          )),
+                hintText: "Confirm Password",
+                fillColor: Colors.white,
+                contentPadding: EdgeInsets.only(left: 25),
+                border: new OutlineInputBorder(
+                  borderRadius: new BorderRadius.circular(25.0),
+                  borderSide: new BorderSide(),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(25.0),
+                  borderSide: BorderSide(
+                    color: Colors.blue,
+                  ),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(25.0),
+                  borderSide: BorderSide(
+                    color: Colors.blueAccent,
+                    width: 2.0,
+                  ),
+                ),
+              )),
         ),
         Padding(
           padding: const EdgeInsets.all(10.0),
           child: TextFormField(
+              controller: aadharNumberController,
+              validator: (String value) {
+                if (value.isEmpty) {
+                  return "Please enter the Aadhar number";
+                }
+                // if (value.length != 10) {
+                //   return " Please enter a valid number ";
+                // }
+              },
               decoration: InputDecoration(
-            hintText: "First Name",
-            fillColor: Colors.white,
-            contentPadding: EdgeInsets.only(left: 25),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(25.0),
-              borderSide: BorderSide(
-                color: Colors.blue,
-              ),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(25.0),
-              borderSide: BorderSide(
-                color: Colors.blueAccent,
-                width: 2.0,
-              ),
-            ),
-          )),
+                hintText: "Aadhar Number",
+                fillColor: Colors.white,
+                contentPadding: EdgeInsets.only(left: 25),
+                border: new OutlineInputBorder(
+                  borderRadius: new BorderRadius.circular(25.0),
+                  borderSide: new BorderSide(),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(25.0),
+                  borderSide: BorderSide(
+                    color: Colors.blue,
+                  ),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(25.0),
+                  borderSide: BorderSide(
+                    color: Colors.blueAccent,
+                    width: 2.0,
+                  ),
+                ),
+              )),
         ),
         Padding(
           padding: const EdgeInsets.only(left: 12.0),
@@ -296,11 +397,10 @@ class _SignupState extends State<Signup> {
           child: MaterialButton(
             onPressed: () {
               print("login clicked..");
-              Navigator.push(context, SlideLeftRoute(page: Login()));
 
-              // if (_formKey.currentState.validate()) {
-              //   // loginUser();
-              // }
+              if (_formKey.currentState.validate()) {
+                Navigator.push(context, SlideLeftRoute(page: Login()));
+              }
             },
             minWidth: 250.0,
             // shape: RoundedRectangleBorder(
@@ -356,70 +456,73 @@ class _SignupState extends State<Signup> {
       // ),
       backgroundColor: Colors.grey[200],
       body: SingleChildScrollView(
-        child: Stack(
-          children: <Widget>[
-            Container(
-              height: MediaQuery.of(context).size.height * 0.3,
-              width: MediaQuery.of(context).size.width,
-              child: Container(
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/images/patternback.jpg'),
-                    fit: BoxFit.fill,
-                  ),
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: const Radius.circular(70),
-                    bottomRight: const Radius.circular(70),
-                  ),
-                ),
-              ),
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                // _buildContainer(),
-                SizedBox(height: 70.0),
-                Align(
-                  alignment: Alignment.bottomLeft,
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 20.0, bottom: 10.0),
-                    child: Text(
-                      'Sign up',
-                      style: TextStyle(
-                        fontSize: MediaQuery.of(context).size.height / 25,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
+        child: Form(
+          key: _formKey,
+          child: Stack(
+            children: <Widget>[
+              Container(
+                height: MediaQuery.of(context).size.height * 0.3,
+                width: MediaQuery.of(context).size.width,
+                child: Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('assets/images/patternback.jpg'),
+                      fit: BoxFit.fill,
+                    ),
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: const Radius.circular(70),
+                      bottomRight: const Radius.circular(70),
                     ),
                   ),
                 ),
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  // _buildContainer(),
+                  SizedBox(height: 70.0),
+                  Align(
+                    alignment: Alignment.bottomLeft,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 20.0, bottom: 10.0),
+                      child: Text(
+                        'Sign up',
+                        style: TextStyle(
+                          fontSize: MediaQuery.of(context).size.height / 25,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
 
-                Container(
-                  margin: const EdgeInsets.only(
-                    left: 15,
-                    right: 15,
+                  Container(
+                    margin: const EdgeInsets.only(
+                      left: 15,
+                      right: 15,
+                    ),
+                    padding: const EdgeInsets.all(5.0),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey),
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.grey[200], //Color(0xFFE4EDEF),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey,
+                          blurRadius: 35.0,
+                          spreadRadius: 0.0,
+                        )
+                      ],
+                    ),
+                    child: _buildContainer(),
                   ),
-                  padding: const EdgeInsets.all(5.0),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey),
-                    borderRadius: BorderRadius.circular(20),
-                    color: Colors.grey[200], //Color(0xFFE4EDEF),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey,
-                        blurRadius: 35.0,
-                        spreadRadius: 0.0,
-                      )
-                    ],
-                  ),
-                  child: _buildContainer(),
-                ),
-                // SizedBox(height: 30.0),
-                _buildLoginButton(),
-                _buildSignUpBtn(),
-              ],
-            )
-          ],
+                  // SizedBox(height: 30.0),
+                  _buildLoginButton(),
+                  _buildSignUpBtn(),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );

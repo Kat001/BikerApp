@@ -370,7 +370,7 @@ class _OrderDetailState extends State<OrderDetail> {
                 border: Border.all(color: Colors.blue),
                 borderRadius: BorderRadius.circular(10.0)),
             child: Text(
-              " On the way ",
+              " Get An Otp ",
               style: TextStyle(
                 fontFamily: "RobotoBold",
                 fontSize: displayWidth(context) * 0.045,

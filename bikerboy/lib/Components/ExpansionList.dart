@@ -53,10 +53,7 @@ class Item {
   String headerValue;
   bool isExpanded;
 
-  Item(
-      {required this.expandedValue,
-      required this.headerValue,
-      this.isExpanded = false});
+  Item({this.expandedValue, this.headerValue, this.isExpanded = false});
 }
 
 List<Item> generateItems(int numberofItems) {

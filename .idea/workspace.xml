@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c4e115d7-dd5a-4cc6-95d4-84907a6c123f" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1uDyzw3RLCknhJbH5ZLWXdmgyai" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c4e115d7-dd5a-4cc6-95d4-84907a6c123f" name="Default Changelist" comment="" />
+      <created>1624214720360</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1624214720360</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="228" y="144" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1624214804404">
+      <screen x="0" y="25" width="1536" height="935" />
+    </state>
+    <state x="228" y="144" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1536.935@0.25.1536.935" timestamp="1624214804403" />
+    <state x="100" y="125" width="1336" height="735" key="AVDManager" timestamp="1624215328103">
+      <screen x="0" y="25" width="1536" height="935" />
+    </state>
+    <state x="100" y="125" width="1336" height="735" key="AVDManager/0.25.1536.935@0.25.1536.935" timestamp="1624215328103" />
+    <state x="516" y="224" key="AndroidProcessChooserDialog" timestamp="1624214976654">
+      <screen x="0" y="25" width="1536" height="935" />
+    </state>
+    <state x="516" y="224" key="AndroidProcessChooserDialog/0.25.1536.935@0.25.1536.935" timestamp="1624214976654" />
+  </component>
+</project>
